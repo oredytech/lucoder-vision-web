@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 213 100% 35%;
+    --primary: 240 100% 29%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -35,7 +34,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 213 100% 35%;
+    --ring: 240 100% 29%;
 
     --radius: 0.5rem;
 
@@ -48,10 +47,10 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* LUCODER custom colors */
-    --lucoder-blue: 213 100% 35%; /* #0056b3 */
+    /* LUCODER custom colors - couleur principale mise à jour */
+    --lucoder-blue: 240 100% 29%; /* #010192 */
     --lucoder-green: 109 44% 62%; /* #7cc576 */
-    --lucoder-blue-dark: 213 100% 29%; /* #004494 */
+    --lucoder-blue-dark: 240 100% 23%; /* #010175 */
     --lucoder-green-dark: 109 44% 52%; /* #6bb565 */
   }
 
@@ -136,12 +135,12 @@
 
   /* Gradient overlays for better text readability */
   .gradient-overlay {
-    background: linear-gradient(135deg, rgba(0, 86, 179, 0.8) 0%, rgba(124, 197, 118, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(1, 1, 146, 0.8) 0%, rgba(124, 197, 118, 0.6) 100%);
   }
 
   /* Custom button styles */
   .btn-lucoder-primary {
-    @apply bg-[#0056b3] hover:bg-[#004494] text-white font-medium px-6 py-3 rounded-md transition-all duration-300;
+    @apply bg-[#010192] hover:bg-[#010175] text-white font-medium px-6 py-3 rounded-md transition-all duration-300;
   }
 
   .btn-lucoder-secondary {
@@ -150,7 +149,7 @@
 
   /* Typography helpers */
   .text-lucoder-blue {
-    color: #0056b3;
+    color: #010192;
   }
 
   .text-lucoder-green {
@@ -158,7 +157,7 @@
   }
 
   .bg-lucoder-blue {
-    background-color: #0056b3;
+    background-color: #010192;
   }
 
   .bg-lucoder-green {
@@ -203,7 +202,7 @@
 /* Focus states for accessibility */
 button:focus,
 a:focus {
-  outline: 2px solid #0056b3;
+  outline: 2px solid #010192;
   outline-offset: 2px;
 }
 

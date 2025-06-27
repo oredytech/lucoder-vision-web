@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,20 +62,20 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// LUCODER brand colors
+				// LUCODER brand colors - couleur principale mise à jour
 				lucoder: {
 					blue: {
-						DEFAULT: '#0056b3',
-						50: '#e6f2ff',
-						100: '#b3d9ff',
-						200: '#80c0ff',
-						300: '#4da7ff',
-						400: '#1a8eff',
-						500: '#0056b3',
-						600: '#004494',
-						700: '#003275',
-						800: '#002056',
-						900: '#000e37'
+						DEFAULT: '#010192',
+						50: '#e6e6ff',
+						100: '#b3b3ff',
+						200: '#8080ff',
+						300: '#4d4dff',
+						400: '#1a1aff',
+						500: '#010192',
+						600: '#010175',
+						700: '#010158',
+						800: '#01013b',
+						900: '#00001e'
 					},
 					green: {
 						DEFAULT: '#7cc576',

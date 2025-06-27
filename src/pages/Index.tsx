@@ -1,32 +1,33 @@
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Users, Heart, BookOpen, MapPin, Calendar, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, Users, Heart, BookOpen, MapPin, Calendar, ExternalLink, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const slides = [
     {
       title: "Rassembler les gens, les idées et les actions de façon durable",
       subtitle: "Vision LUCODER",
       description: "Depuis 1996, nous œuvrons pour le développement rural et le changement positif",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       cta: "Découvrir nos actions"
     },
     {
       title: "Autonomisation des communautés",
       subtitle: "Notre mission",
       description: "Nous renforçons les capacités locales pour un développement durable",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       cta: "Voir nos projets"
     },
     {
       title: "Ensemble pour l'avenir",
       subtitle: "Rejoignez-nous",
       description: "Devenez partenaire de nos actions pour un impact durable",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       cta: "Faire un don"
     }
   ];
@@ -76,21 +77,21 @@ const Index = () => {
       location: "Goma, Nord-Kivu",
       date: "2024",
       beneficiaries: "500 femmes",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Programme de sécurité alimentaire",
       location: "Territoire de Masisi",
       date: "2024",
       beneficiaries: "1,200 familles",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Formation en entrepreneuriat",
       location: "Bukavu, Sud-Kivu",
       date: "2023",
       beneficiaries: "300 jeunes",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -99,27 +100,27 @@ const Index = () => {
       title: "Lancement du nouveau programme de formation",
       excerpt: "Un nouveau programme de formation professionnelle pour les jeunes...",
       date: "15 Décembre 2024",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Partenariat avec l'UNICEF",
       excerpt: "Signature d'un accord de partenariat pour l'éducation...",
       date: "10 Décembre 2024",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Rapport annuel 2024",
       excerpt: "Découvrez nos réalisations et l'impact de nos actions...",
       date: "5 Décembre 2024",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
   const partners = [
-    { name: "UNICEF", logo: "/placeholder.svg" },
-    { name: "OMS", logo: "/placeholder.svg" },
-    { name: "USAID", logo: "/placeholder.svg" },
-    { name: "Union Européenne", logo: "/placeholder.svg" }
+    { name: "UNICEF", logo: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
+    { name: "OMS", logo: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
+    { name: "USAID", logo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
+    { name: "Union Européenne", logo: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" }
   ];
 
   const nextSlide = () => {
@@ -137,26 +138,56 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/placeholder.svg" alt="LUCODER" className="h-10 w-auto" />
-              <span className="ml-3 text-xl font-bold text-[#0056b3]">LUCODER</span>
+              <img src="/lovable-uploads/6a0cdfc8-4917-4012-af1f-41659d85515c.png" alt="LUCODER" className="h-10 w-auto" />
+              <span className="ml-3 text-xl font-bold text-[#010192] hidden sm:block">LUCODER</span>
             </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="/" className="text-[#0056b3] font-medium">Accueil</a>
-              <a href="/a-propos" className="text-gray-700 hover:text-[#0056b3] transition-colors">À propos</a>
-              <a href="/domaines-action" className="text-gray-700 hover:text-[#0056b3] transition-colors">Domaines d'action</a>
-              <a href="/projets" className="text-gray-700 hover:text-[#0056b3] transition-colors">Projets</a>
-              <a href="/actualites" className="text-gray-700 hover:text-[#0056b3] transition-colors">Actualités</a>
-              <a href="/contact" className="text-gray-700 hover:text-[#0056b3] transition-colors">Contact</a>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-6 lg:space-x-8">
+              <a href="/" className="text-[#010192] font-medium whitespace-nowrap">Accueil</a>
+              <a href="/a-propos" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">À propos</a>
+              <a href="/domaines-action" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Domaines d'action</a>
+              <a href="/projets" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Projets</a>
+              <a href="/actualites" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Actualités</a>
+              <a href="/contact" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Contact</a>
             </div>
-            <div className="flex space-x-3">
-              <Button variant="outline" size="sm" className="border-[#0056b3] text-[#0056b3] hover:bg-[#0056b3] hover:text-white">
-                Bénévolat
-              </Button>
-              <Button size="sm" className="bg-[#7cc576] hover:bg-[#6bb565] text-white">
+            
+            {/* Desktop CTA Button */}
+            <div className="hidden md:block">
+              <Button size="sm" className="bg-[#7cc576] hover:bg-[#6bb565] text-white whitespace-nowrap">
                 Faire un don
               </Button>
             </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-[#010192] hover:text-[#010175] p-2"
+              >
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-white border-t border-gray-100 py-4">
+              <div className="flex flex-col space-y-3">
+                <a href="/" className="text-[#010192] font-medium px-4 py-2">Accueil</a>
+                <a href="/a-propos" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">À propos</a>
+                <a href="/domaines-action" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Domaines d'action</a>
+                <a href="/projets" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Projets</a>
+                <a href="/actualites" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Actualités</a>
+                <a href="/contact" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Contact</a>
+                <div className="px-4 py-2">
+                  <Button size="sm" className="bg-[#7cc576] hover:bg-[#6bb565] text-white w-full">
+                    Faire un don
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -169,7 +200,7 @@ const Index = () => {
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0056b3]/80 to-[#0056b3]/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#010192]/80 to-[#010192]/60"></div>
             <img
               src={slide.image}
               alt={slide.title}
@@ -178,10 +209,10 @@ const Index = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white max-w-4xl px-6">
                 <p className="text-lg mb-2 text-[#7cc576]">{slide.subtitle}</p>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                   {slide.title}
                 </h1>
-                <p className="text-xl mb-8 opacity-90">{slide.description}</p>
+                <p className="text-lg sm:text-xl mb-8 opacity-90">{slide.description}</p>
                 <Button size="lg" className="bg-[#7cc576] hover:bg-[#6bb565] text-white px-8 py-3 text-lg">
                   {slide.cta}
                 </Button>
@@ -232,13 +263,13 @@ const Index = () => {
                 Depuis plus de 25 ans, nous accompagnons les communautés rurales dans leur développement 
                 à travers des programmes d'autonomisation, d'entrepreneuriat, de santé et de sécurité alimentaire.
               </p>
-              <Button className="bg-[#0056b3] hover:bg-[#004494] text-white">
+              <Button className="bg-[#010192] hover:bg-[#010175] text-white">
                 En savoir plus
               </Button>
             </div>
             <div className="relative">
               <img
-                src="/placeholder.svg"
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="LUCODER en action"
                 className="rounded-lg shadow-lg w-full h-80 object-cover"
               />
@@ -269,7 +300,7 @@ const Index = () => {
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-sm">
                 <CardHeader className={`${domain.color} rounded-t-lg`}>
                   <div className="text-4xl mb-3">{domain.icon}</div>
-                  <CardTitle className="text-[#0056b3]">{domain.title}</CardTitle>
+                  <CardTitle className="text-[#010192]">{domain.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
                   <CardDescription className="text-gray-600">
@@ -307,7 +338,7 @@ const Index = () => {
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <CardTitle className="text-[#0056b3] mb-3">{project.title}</CardTitle>
+                  <CardTitle className="text-[#010192] mb-3">{project.title}</CardTitle>
                   <div className="space-y-2 text-sm text-gray-600">
                     <div className="flex items-center">
                       <MapPin className="h-4 w-4 mr-2" />
@@ -323,7 +354,7 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-[#0056b3] text-[#0056b3] hover:bg-[#0056b3] hover:text-white">
+            <Button variant="outline" className="border-[#010192] text-[#010192] hover:bg-[#010192] hover:text-white">
               Voir tous les projets
             </Button>
           </div>
@@ -356,13 +387,13 @@ const Index = () => {
                     <Calendar className="h-4 w-4 mr-2" />
                     {article.date}
                   </div>
-                  <CardTitle className="text-[#0056b3] mb-3 hover:text-[#004494] cursor-pointer transition-colors">
+                  <CardTitle className="text-[#010192] mb-3 hover:text-[#010175] cursor-pointer transition-colors">
                     {article.title}
                   </CardTitle>
                   <CardDescription className="text-gray-600 mb-4">
                     {article.excerpt}
                   </CardDescription>
-                  <Button variant="ghost" className="text-[#0056b3] hover:text-[#004494] p-0">
+                  <Button variant="ghost" className="text-[#010192] hover:text-[#010175] p-0">
                     Lire la suite
                     <ExternalLink className="h-4 w-4 ml-2" />
                   </Button>
@@ -371,7 +402,7 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-[#0056b3] text-[#0056b3] hover:bg-[#0056b3] hover:text-white">
+            <Button variant="outline" className="border-[#010192] text-[#010192] hover:bg-[#010192] hover:text-white">
               Toutes les actualités
             </Button>
           </div>
@@ -379,7 +410,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#0056b3] text-white">
+      <section className="py-16 bg-[#010192] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -395,7 +426,7 @@ const Index = () => {
                   <Heart className="h-5 w-5 mr-2" />
                   Faire un don
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#0056b3]">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#010192]">
                   <Users className="h-5 w-5 mr-2" />
                   Devenir bénévole
                 </Button>
@@ -457,7 +488,7 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src="/placeholder.svg" alt="LUCODER" className="h-8 w-auto" />
+                <img src="/lovable-uploads/6a0cdfc8-4917-4012-af1f-41659d85515c.png" alt="LUCODER" className="h-8 w-auto" />
                 <span className="ml-2 text-lg font-bold">LUCODER</span>
               </div>
               <p className="text-gray-400 mb-4">
