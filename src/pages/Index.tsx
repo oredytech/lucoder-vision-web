@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Users, Heart, BookOpen, MapPin, Calendar, ExternalLink, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -35,49 +35,49 @@ const Index = () => {
   const domains = [
     {
       title: "Autonomisation",
-      description: "Inclusion des femmes, jeunes et personnes marginalisées",
+      description: "L'autonomisation et l'inclusion des femmes, jeunes et autres personnes marginalisées",
       icon: "👥",
       color: "bg-blue-50"
     },
     {
       title: "Entrepreneuriat",
-      description: "Leadership transformationnel des jeunes",
+      description: "L'entrepreneuriat et leadership transformationnel des jeunes",
       icon: "💼",
       color: "bg-green-50"
     },
     {
       title: "Santé & Nutrition",
-      description: "Soins primaires, santé reproductive, lutte contre VIH/Sida",
+      description: "Promotion de la santé/nutrition (soins primaires, santé reproductive, lutte contre les maladies infectieuses)",
       icon: "🏥",
       color: "bg-blue-50"
     },
     {
       title: "Sécurité Alimentaire",
-      description: "Agriculture, élevage, pisciculture et AGR",
+      description: "Promotion de la sécurité alimentaire et des moyens de subsistance (agriculture, élevage, pisciculture et AGR)",
       icon: "🌾",
       color: "bg-green-50"
     },
     {
       title: "Droits Humains",
-      description: "Protection des droits, lutte contre les VBG",
+      description: "Protection et promotion des droits humains, lutte contre les VBG et coexistence pacifique",
       icon: "⚖️",
       color: "bg-blue-50"
     },
     {
       title: "Encadrement Jeunesse",
-      description: "Lutte contre l'alcoolisme et toxicomanie",
+      description: "L'encadrement, l'éducation et l'accompagnement des jeunes dans la lutte contre l'alcoolisme et la toxicomanie",
       icon: "🎓",
       color: "bg-green-50"
     },
     {
       title: "Infrastructures",
-      description: "Construction/réhabilitation d'infrastructures communautaires",
+      description: "La construction/réhabilitation des infrastructures communautaires de base",
       icon: "🏗️",
       color: "bg-blue-50"
     },
     {
       title: "Environnement",
-      description: "Protection environnementale et conservation biodiversité",
+      description: "La protection de l'environnement et conservation de la biodiversité",
       icon: "🌱",
       color: "bg-green-50"
     }
@@ -159,24 +159,28 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/lovable-uploads/6a0cdfc8-4917-4012-af1f-41659d85515c.png" alt="LUCODER" className="h-12 w-auto" />
+              <Link to="/">
+                <img src="/lovable-uploads/6a0cdfc8-4917-4012-af1f-41659d85515c.png" alt="LUCODER" className="h-12 w-auto" />
+              </Link>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-6 lg:space-x-8">
-              <a href="/" className="text-[#010192] font-medium whitespace-nowrap">Accueil</a>
-              <a href="/a-propos" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">À propos</a>
-              <a href="/domaines-action" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Domaines d'action</a>
-              <a href="/projets" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Projets</a>
-              <a href="/actualites" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Actualités</a>
-              <a href="/contact" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Contact</a>
+              <Link to="/" className="text-[#010192] font-medium whitespace-nowrap">Accueil</Link>
+              <Link to="/a-propos" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">À propos</Link>
+              <Link to="/domaines-action" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Domaines d'action</Link>
+              <Link to="/projets" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Projets</Link>
+              <Link to="/actualites" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Actualités</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-[#010192] transition-colors whitespace-nowrap">Contact</Link>
             </div>
             
             {/* Desktop CTA Button */}
             <div className="hidden md:block">
-              <Button size="sm" className="bg-[#7cc576] hover:bg-[#6bb565] text-white whitespace-nowrap">
-                Faire un don
-              </Button>
+              <Link to="/don">
+                <Button size="sm" className="bg-[#7cc576] hover:bg-[#6bb565] text-white whitespace-nowrap">
+                  Faire un don
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile menu button */}
@@ -194,16 +198,18 @@ const Index = () => {
           {mobileMenuOpen && (
             <div className="md:hidden bg-white border-t border-gray-100 py-4">
               <div className="flex flex-col space-y-3">
-                <a href="/" className="text-[#010192] font-medium px-4 py-2">Accueil</a>
-                <a href="/a-propos" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">À propos</a>
-                <a href="/domaines-action" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Domaines d'action</a>
-                <a href="/projets" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Projets</a>
-                <a href="/actualites" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Actualités</a>
-                <a href="/contact" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2">Contact</a>
+                <Link to="/" className="text-[#010192] font-medium px-4 py-2" onClick={() => setMobileMenuOpen(false)}>Accueil</Link>
+                <Link to="/a-propos" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2" onClick={() => setMobileMenuOpen(false)}>À propos</Link>
+                <Link to="/domaines-action" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2" onClick={() => setMobileMenuOpen(false)}>Domaines d'action</Link>
+                <Link to="/projets" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2" onClick={() => setMobileMenuOpen(false)}>Projets</Link>
+                <Link to="/actualites" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2" onClick={() => setMobileMenuOpen(false)}>Actualités</Link>
+                <Link to="/contact" className="text-gray-700 hover:text-[#010192] transition-colors px-4 py-2" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
                 <div className="px-4 py-2">
-                  <Button size="sm" className="bg-[#7cc576] hover:bg-[#6bb565] text-white w-full">
-                    Faire un don
-                  </Button>
+                  <Link to="/don" onClick={() => setMobileMenuOpen(false)}>
+                    <Button size="sm" className="bg-[#7cc576] hover:bg-[#6bb565] text-white w-full">
+                      Faire un don
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -233,9 +239,11 @@ const Index = () => {
                   {slide.title}
                 </h1>
                 <p className="text-lg sm:text-xl mb-8 opacity-90">{slide.description}</p>
-                <Button size="lg" className="bg-[#7cc576] hover:bg-[#6bb565] text-white px-8 py-3 text-lg">
-                  {slide.cta}
-                </Button>
+                <Link to="/a-propos">
+                  <Button size="lg" className="bg-[#7cc576] hover:bg-[#6bb565] text-white px-8 py-3 text-lg">
+                    {slide.cta}
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -283,9 +291,11 @@ const Index = () => {
                 Depuis plus de 25 ans, nous accompagnons les communautés rurales dans leur développement 
                 à travers des programmes d'autonomisation, d'entrepreneuriat, de santé et de sécurité alimentaire.
               </p>
-              <Button className="bg-[#010192] hover:bg-[#010175] text-white">
-                En savoir plus
-              </Button>
+              <Link to="/a-propos">
+                <Button className="bg-[#010192] hover:bg-[#010175] text-white">
+                  En savoir plus
+                </Button>
+              </Link>
             </div>
             <div className="relative">
               <img
@@ -295,8 +305,8 @@ const Index = () => {
               />
               <div className="absolute -bottom-6 -right-6 bg-[#7cc576] text-white p-6 rounded-lg shadow-lg">
                 <div className="text-center">
-                  <div className="text-2xl font-bold">25+</div>
-                  <div className="text-sm">Années d'expérience</div>
+                  <div className="text-2xl font-bold">28+</div>
+                  <div className="text-sm opacity-90">Années d'expérience</div>
                 </div>
               </div>
             </div>
@@ -374,9 +384,11 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-[#010192] text-[#010192] hover:bg-[#010192] hover:text-white">
-              Voir tous les projets
-            </Button>
+            <Link to="/projets">
+              <Button variant="outline" className="border-[#010192] text-[#010192] hover:bg-[#010192] hover:text-white">
+                Voir tous les projets
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -422,9 +434,11 @@ const Index = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-[#010192] text-[#010192] hover:bg-[#010192] hover:text-white">
-              Toutes les actualités
-            </Button>
+            <Link to="/actualites">
+              <Button variant="outline" className="border-[#010192] text-[#010192] hover:bg-[#010192] hover:text-white">
+                Toutes les actualités
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -442,14 +456,18 @@ const Index = () => {
                 Votre soutien nous permet de continuer nos actions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-[#7cc576] hover:bg-[#6bb565] text-white">
-                  <Heart className="h-5 w-5 mr-2" />
-                  Faire un don
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#010192]">
-                  <Users className="h-5 w-5 mr-2" />
-                  Devenir bénévole
-                </Button>
+                <Link to="/don">
+                  <Button size="lg" className="bg-[#7cc576] hover:bg-[#6bb565] text-white">
+                    <Heart className="h-5 w-5 mr-2" />
+                    Faire un don
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#010192]">
+                    <Users className="h-5 w-5 mr-2" />
+                    Nous contacter
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="text-center">
@@ -463,7 +481,7 @@ const Index = () => {
                   <div className="text-sm opacity-90">Projets réalisés</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-[#7cc576]">25+</div>
+                  <div className="text-4xl font-bold text-[#7cc576]">28+</div>
                   <div className="text-sm opacity-90">Années d'expérience</div>
                 </div>
                 <div>
@@ -522,10 +540,10 @@ const Index = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Navigation</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="/a-propos" className="hover:text-white transition-colors">À propos</a></li>
-                <li><a href="/domaines-action" className="hover:text-white transition-colors">Domaines d'action</a></li>
-                <li><a href="/projets" className="hover:text-white transition-colors">Projets</a></li>
-                <li><a href="/actualites" className="hover:text-white transition-colors">Actualités</a></li>
+                <li><Link to="/a-propos" className="hover:text-white transition-colors">À propos</Link></li>
+                <li><Link to="/domaines-action" className="hover:text-white transition-colors">Domaines d'action</Link></li>
+                <li><Link to="/projets" className="hover:text-white transition-colors">Projets</Link></li>
+                <li><Link to="/actualites" className="hover:text-white transition-colors">Actualités</Link></li>
               </ul>
             </div>
             <div>
