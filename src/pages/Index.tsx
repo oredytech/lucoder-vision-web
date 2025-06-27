@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Users, Heart, BookOpen, MapPin, Calendar, ExternalLink, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,22 +12,22 @@ const Index = () => {
     {
       title: "Rassembler les gens, les idées et les actions de façon durable",
       subtitle: "Vision LUCODER",
-      description: "Depuis 1996, nous œuvrons pour le développement rural et le changement positif",
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      description: "Depuis 1996, nous œuvrons pour le développement rural et la lutte contre la délinquance",
+      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       cta: "Découvrir nos actions"
     },
     {
       title: "Autonomisation des communautés",
       subtitle: "Notre mission",
       description: "Nous renforçons les capacités locales pour un développement durable",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       cta: "Voir nos projets"
     },
     {
       title: "Ensemble pour l'avenir",
       subtitle: "Rejoignez-nous",
       description: "Devenez partenaire de nos actions pour un impact durable",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+      image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       cta: "Faire un don"
     }
   ];
@@ -35,38 +35,50 @@ const Index = () => {
   const domains = [
     {
       title: "Autonomisation",
-      description: "Renforcement des capacités locales",
+      description: "Inclusion des femmes, jeunes et personnes marginalisées",
       icon: "👥",
       color: "bg-blue-50"
     },
     {
       title: "Entrepreneuriat",
-      description: "Développement économique local",
+      description: "Leadership transformationnel des jeunes",
       icon: "💼",
       color: "bg-green-50"
     },
     {
       title: "Santé & Nutrition",
-      description: "Amélioration des conditions sanitaires",
+      description: "Soins primaires, santé reproductive, lutte contre VIH/Sida",
       icon: "🏥",
       color: "bg-blue-50"
     },
     {
       title: "Sécurité Alimentaire",
-      description: "Lutte contre la malnutrition",
+      description: "Agriculture, élevage, pisciculture et AGR",
       icon: "🌾",
       color: "bg-green-50"
     },
     {
       title: "Droits Humains",
-      description: "Protection et promotion des droits",
+      description: "Protection des droits, lutte contre les VBG",
       icon: "⚖️",
       color: "bg-blue-50"
     },
     {
-      title: "Jeunesse",
-      description: "Accompagnement des jeunes",
+      title: "Encadrement Jeunesse",
+      description: "Lutte contre l'alcoolisme et toxicomanie",
       icon: "🎓",
+      color: "bg-green-50"
+    },
+    {
+      title: "Infrastructures",
+      description: "Construction/réhabilitation d'infrastructures communautaires",
+      icon: "🏗️",
+      color: "bg-blue-50"
+    },
+    {
+      title: "Environnement",
+      description: "Protection environnementale et conservation biodiversité",
+      icon: "🌱",
       color: "bg-green-50"
     }
   ];
@@ -77,21 +89,21 @@ const Index = () => {
       location: "Goma, Nord-Kivu",
       date: "2024",
       beneficiaries: "500 femmes",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Programme de sécurité alimentaire",
       location: "Territoire de Masisi",
       date: "2024",
       beneficiaries: "1,200 familles",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
-      title: "Formation en entrepreneuriat",
+      title: "Formation en entrepreneuriat jeunesse",
       location: "Bukavu, Sud-Kivu",
       date: "2023",
       beneficiaries: "300 jeunes",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
@@ -100,28 +112,37 @@ const Index = () => {
       title: "Lancement du nouveau programme de formation",
       excerpt: "Un nouveau programme de formation professionnelle pour les jeunes...",
       date: "15 Décembre 2024",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Partenariat avec l'UNICEF",
       excerpt: "Signature d'un accord de partenariat pour l'éducation...",
       date: "10 Décembre 2024",
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
       title: "Rapport annuel 2024",
       excerpt: "Découvrez nos réalisations et l'impact de nos actions...",
       date: "5 Décembre 2024",
-      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     }
   ];
 
   const partners = [
-    { name: "UNICEF", logo: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
-    { name: "OMS", logo: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
-    { name: "USAID", logo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
-    { name: "Union Européenne", logo: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" }
+    { name: "UNICEF", logo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
+    { name: "OMS", logo: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
+    { name: "USAID", logo: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
+    { name: "Union Européenne", logo: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" }
   ];
+
+  // Auto slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -138,8 +159,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/lovable-uploads/6a0cdfc8-4917-4012-af1f-41659d85515c.png" alt="LUCODER" className="h-10 w-auto" />
-              <span className="ml-3 text-xl font-bold text-[#010192] hidden sm:block">LUCODER</span>
+              <img src="/lovable-uploads/6a0cdfc8-4917-4012-af1f-41659d85515c.png" alt="LUCODER" className="h-12 w-auto" />
             </div>
             
             {/* Desktop Navigation */}
@@ -256,7 +276,7 @@ const Index = () => {
                 Qui sommes-nous ?
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Créée le 31 janvier 1996 à Goma, la LUCODER (Lutte pour le Changement et le Développement Rural) 
+                Créée le 31 janvier 1996 à Goma, la LUCODER (Lutte Contre la Délinquance et l'Exode Rural) 
                 est une organisation qui œuvre pour rassembler les gens, les idées et les actions de façon durable.
               </p>
               <p className="text-gray-600 mb-8">
@@ -269,7 +289,7 @@ const Index = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="LUCODER en action"
                 className="rounded-lg shadow-lg w-full h-80 object-cover"
               />
@@ -295,15 +315,15 @@ const Index = () => {
               Nous intervenons dans plusieurs secteurs clés pour un développement durable et inclusif
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {domains.map((domain, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-sm">
                 <CardHeader className={`${domain.color} rounded-t-lg`}>
                   <div className="text-4xl mb-3">{domain.icon}</div>
-                  <CardTitle className="text-[#010192]">{domain.title}</CardTitle>
+                  <CardTitle className="text-[#010192] text-sm">{domain.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <CardDescription className="text-gray-600">
+                <CardContent className="p-4">
+                  <CardDescription className="text-gray-600 text-sm">
                     {domain.description}
                   </CardDescription>
                 </CardContent>
@@ -489,10 +509,9 @@ const Index = () => {
             <div>
               <div className="flex items-center mb-4">
                 <img src="/lovable-uploads/6a0cdfc8-4917-4012-af1f-41659d85515c.png" alt="LUCODER" className="h-8 w-auto" />
-                <span className="ml-2 text-lg font-bold">LUCODER</span>
               </div>
               <p className="text-gray-400 mb-4">
-                Lutte pour le Changement et le Développement Rural depuis 1996
+                Lutte Contre la Délinquance et l'Exode Rural depuis 1996
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">Facebook</a>
