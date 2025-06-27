@@ -108,10 +108,10 @@ const Layout = ({ children }: LayoutProps) => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Ressources</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="/publications" className="hover:text-white transition-colors">Publications</a></li>
-                <li><a href="/partenaires" className="hover:text-white transition-colors">Partenaires</a></li>
-                <li><a href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</a></li>
-                <li><a href="/politique-confidentialite" className="hover:text-white transition-colors">Confidentialité</a></li>
+                <li><Link to="/publications" className="hover:text-white transition-colors">Publications</Link></li>
+                <li><Link to="/partenaires" className="hover:text-white transition-colors">Partenaires</Link></li>
+                <li><Link to="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link></li>
+                <li><Link to="/politique-confidentialite" className="hover:text-white transition-colors">Confidentialité</Link></li>
               </ul>
             </div>
             <div>
