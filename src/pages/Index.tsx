@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Users, Heart, BookOpen, MapPin, Calendar, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -63,51 +64,51 @@ const Index = () => {
 
   const domains = [
     {
-      title: "Autonomisation",
-      description: "L'autonomisation et l'inclusion des femmes, jeunes et autres personnes marginalisées",
-      icon: "👥",
-      color: "bg-blue-50"
-    },
-    {
-      title: "Entrepreneuriat",
-      description: "L'entrepreneuriat et leadership transformationnel des jeunes",
-      icon: "💼",
-      color: "bg-green-50"
-    },
-    {
-      title: "Santé & Nutrition",
-      description: "Promotion de la santé/nutrition (soins primaires, santé reproductive, lutte contre les maladies infectieuses)",
-      icon: "🏥",
-      color: "bg-blue-50"
-    },
-    {
-      title: "Sécurité Alimentaire",
-      description: "Promotion de la sécurité alimentaire et des moyens de subsistance (agriculture, élevage, pisciculture et AGR)",
-      icon: "🌾",
-      color: "bg-green-50"
-    },
-    {
-      title: "Droits Humains",
-      description: "Protection et promotion des droits humains, lutte contre les VBG et coexistence pacifique",
-      icon: "⚖️",
-      color: "bg-blue-50"
-    },
-    {
-      title: "Encadrement Jeunesse",
-      description: "L'encadrement, l'éducation et l'accompagnement des jeunes dans la lutte contre l'alcoolisme et la toxicomanie",
-      icon: "🎓",
-      color: "bg-green-50"
-    },
-    {
-      title: "Infrastructures",
-      description: "La construction/réhabilitation des infrastructures communautaires de base",
+      title: "Infrastructures et Réhabilitation",
+      description: "Réhabilitation de routes agricoles, construction de moulins hydrauliques et amélioration des infrastructures communautaires",
       icon: "🏗️",
       color: "bg-blue-50"
     },
     {
-      title: "Environnement",
-      description: "La protection de l'environnement et conservation de la biodiversité",
+      title: "Santé",
+      description: "Amélioration des infrastructures sanitaires et équipement des centres de santé pour une meilleure prise en charge des patients",
+      icon: "🏥",
+      color: "bg-green-50"
+    },
+    {
+      title: "Cohésion Sociale et Réinsertion",
+      description: "Réinsertion socio-économique des jeunes à risques et promotion du vivre ensemble par des activités génératrices de revenus",
+      icon: "👥",
+      color: "bg-blue-50"
+    },
+    {
+      title: "Sécurité Alimentaire et Agriculture",
+      description: "Lutte contre la sous-alimentation par l'agriculture, les activités maraîchères et l'agroforesterie",
+      icon: "🌾",
+      color: "bg-green-50"
+    },
+    {
+      title: "Lutte contre la Délinquance et l'Exode Rural",
+      description: "Prévention de la délinquance juvénile et de l'exode rural par l'amélioration des conditions de vie et opportunités économiques",
+      icon: "🎯",
+      color: "bg-blue-50"
+    },
+    {
+      title: "Sensibilisation et Lutte contre les Fléaux Sociaux",
+      description: "Campagnes de sensibilisation contre l'alcoolisme, la drogue et les maladies, particulièrement en milieu scolaire",
+      icon: "📢",
+      color: "bg-green-50"
+    },
+    {
+      title: "Protection Environnementale et Reboisement",
+      description: "Protection de l'environnement par des projets de reboisement et d'assainissement pour lutter contre le changement climatique",
       icon: "🌱",
+      color: "bg-blue-50"
+    },
+    {
+      title: "Développement Durable et Intervention Humanitaire",
+      description: "Engagement global pour le développement durable avec capacité de déploiement rapide en situations d'urgence humanitaire",
+      icon: "🤝",
       color: "bg-green-50"
     }
   ];

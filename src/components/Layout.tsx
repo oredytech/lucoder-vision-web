@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -110,8 +109,6 @@ const Layout = ({ children }: LayoutProps) => {
               <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
                 <li><Link to="/publications" className="hover:text-white transition-colors">Publications</Link></li>
                 <li><Link to="/partenaires" className="hover:text-white transition-colors">Partenaires</Link></li>
-                <li><Link to="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link></li>
-                <li><Link to="/politique-confidentialite" className="hover:text-white transition-colors">Confidentialité</Link></li>
               </ul>
             </div>
             <div>
@@ -126,7 +123,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
           <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400">
             <p className="text-sm sm:text-base">&copy; 2024 LUCODER. Tous droits réservés.</p>
-            <p className="mt-2 text-sm sm:text-base">Fièrement conçu par <span className="text-[#7cc576]">Oredy TECHNOLOGIES</span></p>
+            <p className="mt-2 text-sm sm:text-base">Fièrement conçu par <a href="https://oredytech.com" target="_blank" rel="noopener noreferrer" className="text-[#7cc576] hover:text-[#6bb565] transition-colors">Oredy TECHNOLOGIES</a></p>
           </div>
         </div>
       </footer>
