@@ -117,10 +117,10 @@ const Layout = ({ children }: LayoutProps) => {
             <div>
               <h4 className="text-base sm:text-lg font-semibold mb-4">Contact</h4>
               <div className="text-gray-400 space-y-2 text-sm sm:text-base">
-                <p>Goma, Nord-Kivu</p>
-                <p>République Démocratique du Congo</p>
-                <p className="break-all">contact@lucoder.org</p>
-                <p>+243 XXX XXX XXX</p>
+                <p>26, avenue Beni, Quartier les volcans</p>
+                <p>Commune de Goma, Ville de Goma</p>
+                <p className="break-all">lucoderasblrdc@gmail.com</p>
+                <p>+243 998 673 879</p>
               </div>
             </div>
           </div>

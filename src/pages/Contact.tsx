@@ -18,17 +18,17 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6 text-[#7cc576]" />,
       title: "Adresse",
-      content: ["Avenue Kinyamasika, Quartier Himbi", "Goma, Nord-Kivu", "République Démocratique du Congo"]
+      content: ["26, avenue Beni, Quartier les volcans", "Commune de Goma, Ville de Goma", "République Démocratique du Congo"]
     },
     {
       icon: <Phone className="h-6 w-6 text-[#7cc576]" />,
       title: "Téléphone",
-      content: ["+243 XXX XXX XXX", "+243 XXX XXX XXX"]
+      content: ["+243 998 673 879", "+243 998 398 514"]
     },
     {
       icon: <Mail className="h-6 w-6 text-[#7cc576]" />,
       title: "Email",
-      content: ["contact@lucoder.org", "info@lucoder.org"]
+      content: ["lucoderasblrdc@gmail.com", "lucoderasbl8@gmail.com"]
     },
     {
       icon: <Clock className="h-6 w-6 text-[#7cc576]" />,
