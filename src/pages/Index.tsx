@@ -1,13 +1,41 @@
-
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Users, Heart, BookOpen, MapPin, Calendar, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import Layout from "@/components/Layout";
+
+interface WordPressPost {
+  id: number;
+  title: { rendered: string };
+  content: { rendered: string };
+  excerpt: { rendered: string };
+  date: string;
+  featured_media: number;
+  _embedded?: {
+    "wp:featuredmedia"?: Array<{
+      source_url: string;
+      alt_text: string;
+    }>;
+  };
+}
+
+const fetchRecentPosts = async (): Promise<WordPressPost[]> => {
+  const response = await fetch('https://mishapivoicetv.net/wp-json/wp/v2/posts?per_page=3&_embed');
+  if (!response.ok) {
+    throw new Error('Failed to fetch posts');
+  }
+  return response.json();
+};
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const { data: wordpressPosts } = useQuery({
+    queryKey: ['recentPosts'],
+    queryFn: fetchRecentPosts,
+  });
 
   const slides = [
     {
@@ -108,27 +136,6 @@ const Index = () => {
     }
   ];
 
-  const news = [
-    {
-      title: "Lancement du nouveau programme de formation",
-      excerpt: "Un nouveau programme de formation professionnelle pour les jeunes...",
-      date: "15 Décembre 2024",
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Partenariat avec l'UNICEF",
-      excerpt: "Signature d'un accord de partenariat pour l'éducation...",
-      date: "10 Décembre 2024",
-      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Rapport annuel 2024",
-      excerpt: "Découvrez nos réalisations et l'impact de nos actions...",
-      date: "5 Décembre 2024",
-      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
-
   const partners = [
     { name: "UNICEF", logo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
     { name: "OMS", logo: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" },
@@ -151,6 +158,16 @@ const Index = () => {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const stripHtml = (html: string) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+  };
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substr(0, maxLength) + '...';
   };
 
   return (
@@ -332,7 +349,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* News Section */}
+        {/* News Section - Updated to use WordPress API */}
         <section className="py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 sm:mb-12">
@@ -344,33 +361,63 @@ const Index = () => {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {news.map((article, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                  <div className="relative h-40 sm:h-48">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center text-xs sm:text-sm text-gray-500 mb-3">
-                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2 flex-shrink-0" />
-                      {article.date}
+              {wordpressPosts ? (
+                wordpressPosts.map((post) => (
+                  <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative h-40 sm:h-48">
+                      {post._embedded?.['wp:featuredmedia']?.[0] ? (
+                        <img
+                          src={post._embedded['wp:featuredmedia'][0].source_url}
+                          alt={post._embedded['wp:featuredmedia'][0].alt_text || post.title.rendered}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                          <span className="text-gray-500 text-sm">Pas d'image</span>
+                        </div>
+                      )}
                     </div>
-                    <CardTitle className="text-[#010192] mb-3 hover:text-[#010175] cursor-pointer transition-colors text-sm sm:text-base leading-snug">
-                      {article.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 mb-4 text-xs sm:text-sm">
-                      {article.excerpt}
-                    </CardDescription>
-                    <Button variant="ghost" className="text-[#010192] hover:text-[#010175] p-0 text-xs sm:text-sm">
-                      Lire la suite
-                      <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 ml-2" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex items-center text-xs sm:text-sm text-gray-500 mb-3">
+                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2 flex-shrink-0" />
+                        {new Date(post.date).toLocaleDateString('fr-FR')}
+                      </div>
+                      <Link to={`/article/${post.id}`}>
+                        <CardTitle className="text-[#010192] mb-3 hover:text-[#010175] cursor-pointer transition-colors text-sm sm:text-base leading-snug">
+                          {post.title.rendered}
+                        </CardTitle>
+                      </Link>
+                      <CardDescription className="text-gray-600 mb-4 text-xs sm:text-sm">
+                        {truncateText(stripHtml(post.excerpt.rendered), 120)}
+                      </CardDescription>
+                      <Link to={`/article/${post.id}`}>
+                        <Button variant="ghost" className="text-[#010192] hover:text-[#010175] p-0 text-xs sm:text-sm">
+                          Lire la suite
+                          <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 ml-2" />
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))
+              ) : (
+                // Loading skeleton
+                [...Array(3)].map((_, index) => (
+                  <Card key={index} className="overflow-hidden">
+                    <div className="animate-pulse">
+                      <div className="h-40 sm:h-48 bg-gray-200"></div>
+                      <CardContent className="p-4 sm:p-6">
+                        <div className="h-4 bg-gray-200 rounded w-1/4 mb-3"></div>
+                        <div className="h-5 bg-gray-200 rounded w-3/4 mb-3"></div>
+                        <div className="space-y-2 mb-4">
+                          <div className="h-3 bg-gray-200 rounded"></div>
+                          <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                        </div>
+                        <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+                      </CardContent>
+                    </div>
+                  </Card>
+                ))
+              )}
             </div>
             <div className="text-center mt-8 sm:mt-12">
               <Link to="/actualites">
